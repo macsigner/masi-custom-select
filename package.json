@@ -4,7 +4,7 @@
   "description": "Custom select styling module.",
   "main": "custom-select.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "watch": "sass --watch custom-select.scss:assets/main.css"
   },
   "repository": {
     "type": "git",
@@ -21,5 +21,8 @@
   "bugs": {
     "url": "https://github.com/macsigner/masi-custom-select/issues"
   },
-  "homepage": "https://github.com/macsigner/masi-custom-select#readme"
+  "homepage": "https://github.com/macsigner/masi-custom-select#readme",
+  "devDependencies": {
+    "sass": "^1.58.0"
+  }
 }
