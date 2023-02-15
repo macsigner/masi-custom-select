@@ -3,10 +3,31 @@
  */
 @use 'sass:color';
 
-$custom-select-selected-bg: lightgrey !default;
+$custom-select-selected-bg: var(--custom-select-selected-bg, lightgrey) !default;
+$custom-select-padding-top: var(--custom-select-padding-top, .4em) !default;
+$custom-select-padding-right: var(--custom-select-padding-right, 1em) !default;
+$custom-select-padding-bottom: var(--custom-select-padding-bottom, .3em) !default;
+$custom-select-padding-left: var(--custom-select-padding-left, 1em) !default;
+$custom-select-label-padding-top: $custom-select-padding-top !default;
+$custom-select-label-padding-right: $custom-select-padding-right !default;
+$custom-select-label-padding-bottom: $custom-select-padding-bottom !default;
+$custom-select-label-padding-left: $custom-select-padding-left !default;
+$custom-select-option-padding-top: $custom-select-padding-top !default;
+$custom-select-option-padding-right: $custom-select-padding-right !default;
+$custom-select-option-padding-bottom: $custom-select-padding-bottom !default;
+$custom-select-option-padding-left: $custom-select-padding-left !default;
+$custom-select-option-group-inset: 1em !default;
+$custom-select-action-color: var(--custom-select-action-color, black) !default;
+$custom-select-action-bg: var(--custom-select-action-bg, lightgrey) !default;
+$custom-select-border: 1px solid black !default;
 
 .custom-select {
     position: relative;
+
+    &-original {
+        position: absolute;
+        left: -9999em;
+    }
 
     &.open {
         z-index: 20;
@@ -15,6 +36,8 @@ $custom-select-selected-bg: lightgrey !default;
     &__label {
         display: flex;
         align-items: center;
+        padding: $custom-select-label-padding-top $custom-select-label-padding-right $custom-select-label-padding-bottom $custom-select-label-padding-left;
+        border: $custom-select-border;
     }
 
     &__label-icon {
@@ -22,7 +45,7 @@ $custom-select-selected-bg: lightgrey !default;
         transform: rotate(90deg);
     }
 
-    :where(&--open) &__label-icon {
+    :where(&--is-open) &__label-icon {
         transform: rotate(270deg);
     }
 
@@ -33,10 +56,11 @@ $custom-select-selected-bg: lightgrey !default;
         top: 100%;
         right: 0;
         left: 0;
+        border: $custom-select-border;
         background-color: var(--color-input-bg);
     }
 
-    :where(&--open) &__options {
+    :where(&--is-open) &__options {
         display: block;
     }
 
@@ -46,6 +70,7 @@ $custom-select-selected-bg: lightgrey !default;
 
     &__option {
         cursor: pointer;
+        padding: $custom-select-option-padding-top $custom-select-option-padding-right $custom-select-padding-bottom $custom-select-padding-left;
     }
 
     &__option[aria-selected='true'],
@@ -55,11 +80,11 @@ $custom-select-selected-bg: lightgrey !default;
 
     &__option:hover,
     &__option:focus {
-        color: var(--color-action);
-        background-color: var(--color-action-bg);
+        color: $custom-select-action-color;
+        background-color: $custom-select-action-bg;
     }
 
     :where(&__group) &__options-inner {
-        margin-left: 2rem;
+        margin-left: $custom-select-option-group-inset;
     }
 }

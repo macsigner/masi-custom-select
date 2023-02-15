@@ -1,4 +1,4 @@
-import * as Tools from 'tools.js';
+import * as Tools from './tools.js';
 
 /**
  * Customizable select menu.
@@ -19,7 +19,6 @@ class CustomSelect {
 
         this.el = el;
         this.el.classList.add(this.getNamespace('-original'));
-        this.el.classList.add('custom-select-original');
 
         this.customSelect = document.createElement('dl');
         this.customSelect.classList.add(this.getNamespace());
@@ -219,7 +218,7 @@ class CustomSelect {
      * Open options menu.
      */
     open() {
-        this.customSelect.classList.add('open');
+        this.customSelect.classList.add(this.getNamespace('--is-open'));
 
         document.addEventListener('click', this._clickOutsideListener);
         window.addEventListener('keydown', this._keypressListener);
@@ -229,7 +228,8 @@ class CustomSelect {
      * Close options menu.
      */
     close() {
-        this.customSelect.classList.remove('open');
+        console.log('close');
+        this.customSelect.classList.remove(this.getNamespace('--is-open'));
 
         document.removeEventListener('click', this._clickOutsideListener);
         window.removeEventListener('keydown', this._keypressListener);
@@ -239,7 +239,7 @@ class CustomSelect {
      * Toggle the open state of the select menu.
      */
     toggle() {
-        if (this.customSelect.matches('.open')) {
+        if (this.customSelect.matches(this.getNamespaceClass('--is-open'))) {
             this.close();
         } else {
             this.close();
@@ -253,6 +253,7 @@ class CustomSelect {
      * @private
      */
     _clickOutsideListener(e) {
+        console.log(e);
         // Handle this event explicitly without delegate.
         if (e.target.closest(this.getNamespaceClass()) !== this.customSelect) {
             this.close();

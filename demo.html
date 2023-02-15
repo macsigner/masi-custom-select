@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Demo Custom Select</title>
+    <style>
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        * {
+            appearance: none;
+        }
+
+        main {
+            width: calc(100% - 2 * 20px);
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+    </style>
+    <link rel="stylesheet" href="assets/main.css">
+</head>
+<body>
+<main>
+    <h1>Custom Select Demo</h1>
+
+    <label for="demo-1">Demo 1</label><br>
+    <select name="demo-1" id="demo-1">
+        <option value="value 1">Lorem ipsum.</option>
+        <option value="value 2">Assumenda, veritatis!</option>
+        <option value="value 3">Explicabo, voluptas?</option>
+        <option value="value 4">Pariatur, repellat!</option>
+        <option value="value 5">Quia, veritatis?</option>
+        <option value="value 6">Dolorem, nam?</option>
+        <option value="value 7">Dolor, nemo?</option>
+    </select>
+    <script type="module">
+        import CustomSelect from './custom-select.js';
+        new CustomSelect(document.querySelector('#demo-1'));
+    </script>
+</main>
+</body>
+</html>
