@@ -1,6 +1,6 @@
 {
   "name": "masi-custom-select",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Custom select styling module.",
   "main": "custom-select.js",
   "scripts": {
